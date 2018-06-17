@@ -11,29 +11,8 @@
     <body>
         <topic id="t1" listen="false">
             <action index="1">
-                <speech>aタグを使った例だよ。何か言ってみて</speech>
-                <behavior id="assign" type="normal"/>
+                <speech>ねちゃだめだよ、がんばって</speech>
+                <behavior id="0x06000a" type="normal"/>
             </action>
-            <next href="#t2" type="default"/>
-        </topic>
-        <topic id="t2" listen="true">
-            <a href="#t3">
-                <situation trigger="user-word">ＶＯＩＣＥＰＦ＿ＥＲＲ in ${Lvcsr:Basic}</situation>
-            </a>
-            <a href="#t4" type="default"/>
-            <next href="#t3" type="default"/>
-        </topic>
-        <topic id="t3" listen="false">
-            <action index="1">
-                <speech>ごめんね。よくわからなかったよ</speech>
-                <behavior id="assign" type="normal"/>
-            </action>
-        </topic>
-        <topic id="t4" listen="false">
-            <action index="1">
-                <speech>${Lvcsr:Basic}って聞こえたよ</speech>
-                <behavior id="assign" type="normal"/>
-            </action>
-        </topic>
     </body>
 </hvml>

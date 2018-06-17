@@ -12,7 +12,7 @@
         <topic id="t1" listen="false">
             <action index="1">
                 <speech>ねちゃだめだよ、がんばって</speech>
-                <behavior id="assign" type="normal"/>
+                <behavior id="0x06000a" type="normal"/>
             </action>
         </topic>
     </body>

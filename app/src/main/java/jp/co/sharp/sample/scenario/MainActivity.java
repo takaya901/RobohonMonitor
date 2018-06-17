@@ -294,6 +294,20 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
             Log.d(TAG, "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
         }
+        if (mVoiceUIManager != null) {
+            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_YESNO);
+            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+        }
+//        try {
+//            Thread.sleep(18000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        if (mVoiceUIManager != null) {
+//            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_OPERATOR
+//            );
+//            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+//        }
     }
 
     @Override
@@ -341,7 +355,12 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
 
     public void onCameraViewStopped() {
     }
+
     public Mat onCameraFrame(Mat inputFrame) {
+//        if (mVoiceUIManager != null) {
+//            VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_OPERATOR);
+//            VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);
+//        }
         Mat src = inputFrame;
         Mat detected = src.clone();
         try{
@@ -357,7 +376,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
                 noFaceFrameNum = 0;
             }
             for (int i = 0; i < facesArray.length; i++) {
-                Imgproc.rectangle(detected, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 0, 255), 3);
+                Imgproc.rectangle(detected, facesArray[i].tl(), facesArray[i].br(), new Scalar(255, 0, 0), 3);
             }
         }
         catch (Exception ex){
@@ -365,6 +384,7 @@ public class MainActivity extends Activity implements MainActivityVoiceUIListene
         }
 
         if (noFaceFrameNum >= 60){
+            VoiceUIManagerUtil.stopSpeech();
             if (mVoiceUIManager != null) {
                 VoiceUIVariableUtil.VoiceUIVariableListHelper helper = new VoiceUIVariableUtil.VoiceUIVariableListHelper().addAccost(ScenarioDefinitions.ACC_NAME_FOR_SPEECH);
                 VoiceUIManagerUtil.updateAppInfo(mVoiceUIManager, helper.getVariableList(), true);

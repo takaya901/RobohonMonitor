@@ -24,7 +24,7 @@
             </rule>
             <case id="c1">
                 <action index="1">
-                    <speech>実行してもいい？</speech>
+                    <speech>授業始めてもいい？</speech>
                     <behavior id="assign" type="normal"/>
                 </action>
                 <next href="#t3" type="default"/>
@@ -38,20 +38,20 @@
             </case>
             <case id="c3">
                 <action index="1">
-                    <speech>実行してもよかったらオッケー、ダメだったら、ダメだよって答えてね</speech>
+                    <speech>授業を始めてよかったらオッケー、ダメだったら、ダメだよって答えてね</speech>
                     <behavior id="assign" type="normal"/>
                 </action>
                 <next href="#t3" type="default"/>
             </case>
             <case id="c4">
                 <action index="1">
-                    <speech>実行するのやめとくね</speech>
+                    <speech>授業するのやめとくね</speech>
                     <behavior id="assign" type="normal"/>
                 </action>
             </case>
         </topic>
         <topic dict="Reply" id="t3" listen="true">
-            <a href="#t4">
+            <a href="#t5">
                 <situation trigger="user-word">${Local_Reply:GLOBAL_REPLY_YES} neq null</situation>
             </a>
             <a href="#t6">
@@ -69,13 +69,13 @@
         </topic>
         <topic id="t5" listen="false">
             <action index="1">
-                <speech>実行するね</speech>
+                <speech>きょうはたようたいについてべんきょうするよ。たようたいは，きょくしょてきにはゆーくりっどくうかんとみなせるようなずけいやくうかんのことだよ。たようたいじょうにはすきなところにきょくしょてきにざひょうをかきこむことができるよ。たようたいのていぎでじゅうようなてんは，たようたいのうえにいかにしてざひょうけいをはりつけるかということと，どのようなざひょうけいをもちいたとしてもけいさんにちがいがあらわれないことだよ</speech>
                 <behavior id="assign" type="normal"/>
             </action>
         </topic>
         <topic id="t6" listen="false">
             <action index="1">
-                <speech>そっかー。実行するのやめとくね</speech>
+                <speech>そっかー。授業するのやめとくね</speech>
                 <behavior id="assign" type="normal"/>
             </action>
         </topic>
@@ -83,7 +83,7 @@
             <action index="1">
                 <memory key="loop_count" type="temporary" value="( ${memory_t:loop_count} + 1)"/>
             </action>
-            <next href="#t2" type="default"/>
+            <next href="#t5," type="default"/>
         </topic>
     </body>
 </hvml>
